@@ -35,12 +35,33 @@ export class AppComponent {
   }
 
   onButtonClick() {
-    if(this.texto === '')
-    {
-      this.texto = 'mudou';
-    } else {
-      this.texto = '';
+    const numbers = '1234567890';
+    const letters = 'abcdefghijklmnopqrstuvwxyz';
+    const symbols = '!@#$%&*';
+
+    let validChars = '';
+    if (this.useLetters) {
+      validChars += letters;
     }
+    
+    if (this.useNumbers) {
+      validChars += numbers;
+    }
+
+    if (this.useSymbols) {
+      validChars += symbols;
+    }
+
+    let gereratedPassword = '';
+
+    for (let i = 0; i < this.passwordLength; i++ ) {
+      
+      const index = Math.floor(Math.random() * validChars.length);
+      
+      gereratedPassword += validChars[index];
+    }
+
+    this.texto = gereratedPassword;
   }
 
 }
