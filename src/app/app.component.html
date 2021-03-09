@@ -20,7 +20,9 @@
   <input type="checkbox" (change)="onChangeUseSymbols()"/>
 </div>
 
-<button (click)="onButtonClick()">Generate!</button>
+<button [disabled]="!(passwordLength && (useLetters || useNumbers || useSymbols))"
+      (click)="onButtonClick()">Generate!
+</button>
 
 <div>
   <label>Your Passaword</label>
